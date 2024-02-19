@@ -1,0 +1,48 @@
+// Variables
+$footer-bg-color: #363636;
+$footer-text-color: white;
+footer {
+    background-color: $footer-bg-color;
+    color: $footer-text-color;
+    text-align: center;
+    width: 100%;
+    #footer-content{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 25px 25px 0px 25px;
+    }
+    .footer-section1{
+        img{
+            margin-left: -85px;
+            width: 125px;
+        }
+        h4 {
+            margin-bottom: 10px;
+        }
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        li {
+            margin-bottom: 8px;
+
+            a {
+                text-decoration: none;
+                color: $footer-text-color;
+            }
+        }
+    }
+    .social-links img{
+        width: 40px;
+    }
+    .copyright {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        height: 10vh;
+        background-color: #363636;
+    }
+}

@@ -1,0 +1,28 @@
+nav{
+    position: fixed;
+    height: 10vh;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-size: 1em;
+}
+nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav li{
+    margin: 20px;
+    font-weight: 700;
+    font-family: "Gill Sans Extrabold", sans-serif;
+    letter-spacing: 0.1em;
+}
+nav img{
+    width: 40px;
+}
+
+#underline:hover{
+    color: rgb(100, 183, 100);
+}
