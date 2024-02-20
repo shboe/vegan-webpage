@@ -1,11 +1,11 @@
 // Variables
-$footer-bg-color: #363636;
+$footer-bg-color: #008375;
 $footer-text-color: white;
 footer {
     background-color: $footer-bg-color;
     color: $footer-text-color;
     text-align: center;
-    width: 100%;
+    padding: 20px;
     #footer-content{
         width: 100%;
         display: flex;
@@ -16,7 +16,7 @@ footer {
     .footer-section1{
         img{
             margin-left: -85px;
-            width: 125px;
+            width: 125px;  
         }
         h4 {
             margin-bottom: 10px;
@@ -43,6 +43,6 @@ footer {
         align-items: center;
         color: white;
         height: 10vh;
-        background-color: #363636;
+        background-color: #008375;
     }
 }

@@ -221,6 +221,7 @@ nav {
   justify-content: center;
   color: black;
   font-size: 1em;
+  z-index: 1;
 }
 
 nav ul {
@@ -252,34 +253,33 @@ nav img {
   justify-content: center;
   align-items: center;
 }
-
-#homepage-content {
+#homepage #homepage-content {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
-#homepage-content #content1 h1 {
+#homepage #homepage-content #content1 h1 {
   font-size: 6em;
   letter-spacing: -0.05em;
 }
-#homepage-content #content1 h2 {
+#homepage #homepage-content #content1 h2 {
   margin-top: -15px;
   text-align: center;
   font-size: 2em;
 }
-#homepage-content #content1 h3 {
+#homepage #homepage-content #content1 h3 {
   margin-top: 30px;
   font-size: 2em;
   text-align: center;
   font-weight: normal;
   font-style: italic;
 }
-#homepage-content #content2 {
+#homepage #homepage-content #content2 {
   display: flex;
   justify-content: space-between;
   transform: translateY(100px);
 }
-#homepage-content #content2 a {
+#homepage #homepage-content #content2 a {
   background-color: rgba(0, 0, 0, 0.2);
   border: 0.5px solid rgb(159, 158, 158);
   padding: 12px;
@@ -289,15 +289,57 @@ nav img {
   letter-spacing: 1.5px;
   font-weight: 1000;
 }
-#homepage-content #content2 a:hover {
+#homepage #homepage-content #content2 a:hover {
   opacity: 0.7;
 }
 
+#homepage2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-color: white;
+  width: 80%;
+  margin: 0 auto;
+}
+#homepage2 #homepage-content2 {
+  background-image: url(../img/vegan-contentbg.jpg);
+  background-size: cover;
+  border: solid 1px rgb(176, 215, 36);
+  border-radius: 10px;
+  padding: 100px;
+  width: 60%;
+}
+#homepage2 #homepage-content2 h1 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 4em;
+  letter-spacing: -0.1em;
+}
+#homepage2 #homepage-content3 {
+  width: 30%;
+  text-align: center;
+  word-wrap: inherit;
+  height: 40%;
+  margin-left: 30px;
+}
+#homepage2 #homepage-content3 h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: rgb(237, 237, 83);
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+#homepage2 #homepage-content3 h2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 footer {
-  background-color: #363636;
+  background-color: #008375;
   color: white;
   text-align: center;
-  width: 100%;
+  padding: 20px;
 }
 footer #footer-content {
   width: 100%;
@@ -333,5 +375,5 @@ footer .copyright {
   align-items: center;
   color: white;
   height: 10vh;
-  background-color: #363636;
+  background-color: #008375;
 }/*# sourceMappingURL=style.css.map */
