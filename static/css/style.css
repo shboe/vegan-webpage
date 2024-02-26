@@ -428,6 +428,9 @@ footer .copyright {
   border: 1px solid rgb(184, 180, 180);
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
+#barcode-page #barcode-content h1 {
+  font-size: 1.2em;
+}
 #barcode-page #barcode-content h2 {
   font-size: 1.5em;
   font-weight: bolder;
@@ -438,13 +441,13 @@ footer .copyright {
 #barcode-page #barcode-content .search {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
 }
 #barcode-page #barcode-content .search #text_input {
   border: 1px solid black;
   padding: 10px;
   width: 400px;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 #barcode-page #barcode-content .search #searchimg {
   width: 50px;

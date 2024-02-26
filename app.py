@@ -139,7 +139,18 @@ def barcode():
 def submit():
     if request.method == 'POST':
         inputted_text = request.form['user_text']
-        return redirect(url_for('detail', scode=inputted_text))
+        if not inputted_text:
+            error_message = "バーコードの番号を入力してください"
+            return render_template('barcode-input.html', user_text='', error_message=error_message)
+        try:
+            dbop = DbOP("products")
+            result = dbop.selectEx("SCODE = '" + inputted_text + "'")
+            dbop.close()
+            return redirect(url_for('detail', scode=inputted_text))
+        except IndexError:
+            error_message = "入力された番号はデータベースに存在していません。"
+            return render_template('barcode-input.html', user_text='', error_message=error_message)
+    return redirect(url_for('barcode'))
 ############################################################################
     
 if __name__ == '__main__':

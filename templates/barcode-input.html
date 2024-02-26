@@ -12,7 +12,7 @@
         </div>
         <div class="search">
             <form action="/input" method="post">
-                <input type="text" id="text_input" name="user_text">
+                <input type="text" id="text_input" name="user_text" placeholder="{{ error_message }}" value="{{ user_text }}">
                 <input type="image" src="../static/image/search.png" value="Submit" id="searchimg">
             </form>
         </div>
