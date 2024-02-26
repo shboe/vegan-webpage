@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barcode Input/バーコードインプット</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-</head>
-<body>
-    <nav>
-        <p><img src="../img/groceries.png" alt=""></p>
-        <a href="./homepage.html"><h1>ホーム</h1></a>
-        <a href="./product-list.html"><h1>商品一覧</h1></a>
-        <a href="./barcode-input.html"><h1>バーコードインプット</h1></a>
-    </nav>
+{% extends 'base.html' %}
+{% block title %}Homepage{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block main %}
     <h2>Input the barcode. バーコードナンバーを入力してください</h2>
     <div class="search">
         <form action="/barcode-input" method="post">
@@ -29,17 +20,6 @@
     </div>
     {% endif %}
 
-    <div class="barcode">
-        <p><img src="../img/barcode.avif" alt=""></p>
-    </div>
-</body>
-</html>
-{% extends 'base.html' %}
-{% block title %}Homepage{% endblock %}
-{% block head %}
-    {{ super() }}
-{% endblock %}
-{% block main %}
     <section id="contents">
         <div class="barcode">
             <p><img src="../static/image/barcode.avif" alt="" id="sample_img2"></p>
