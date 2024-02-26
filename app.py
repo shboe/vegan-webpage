@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import mysql.connector
 
-
 app = Flask(__name__)
 
 class DbOP:
@@ -79,7 +78,7 @@ class DbOP:
         self.__con.close()
 
 #home page ################################################
-@app.route('/')
+@app.route('/homepage')
 def index():
     return render_template('homepage.html')
 ############################################################
@@ -103,6 +102,32 @@ def list():
         print(e)
 ########################################################
         
+# detail page #######################
+@app.route('/detail/<scode>', methods=["GET"])
+def detail(scode):
+    sql = "SCODE = '" + scode + "';"
+    try:
+        dbop= DbOP("products")
+        result = dbop.selectEx(sql)
+        dbop.close()
+        return render_template('detail.html',result=result)
+    except mysql.connector.errors.ProgrammingError as e:
+        print('***DB接続エラー****')
+        print(type(e))
+        print(e)
+    
+    except Exception as e:
+        print('****システム運行プログラムエラー****')
+        print(type(e))
+        print(e)
+##############################################################
+
+# barcode-input
+@app.route('/barcode',methods=["GET"])
+def barcode():
+    return render_template('barcode-input.html')
+
+# 
 
 
 

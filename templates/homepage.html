@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage/ホーム</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-</head>
-<body>
-    <nav>
-        <ul>
-            <li><a><img src="../static/image/logo.png" alt=""></a></li>
-            <li><a id="underline" href="#">ホーム</a></li>
-            <li><a id="underline" href="/list">商品一覧</a></li>
-            <li><a id="underline" href="#">Veganについて</a></li>
-            <li><a id="underline" href="#">バーコード入力</a></li>
-        </ul>
-    </nav>
+{% extends 'base.html' %}
+{% block title %}Homepage{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block main %}
     <div id="homepage">
         <div id="homepage-content">
             <div id="content1">
@@ -29,9 +17,6 @@
             </div>
         </div>
     </div>
-
-
-    
     <div id="homepage2">
         <div id="homepage-content2">
             <h1>VEGANISM</h1>
@@ -41,30 +26,4 @@
             <h2>Is it vegan? Remove all doubts with ..... bofasdasdasdadsa </h2>
         </div>
     </div>
-    <footer>
-        <div id="footer-content">
-            <div class="footer-section1">
-                <img src="../static/image/logo.png" alt="">
-            </div>
-            <div class="footer-section2">
-                <ul>
-                    <li><a href="#">Customer service</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section3">
-                <ul class="social-links">
-                    <li><a href="#"><img src="../static/image/facebook.png" alt="Facebook"></a></li>
-                    <li><a href="#"><img src="../static/image/X-Logo.png" alt="Twitter"></a></li>
-                    <li><a href="#"><img src="../static/image/Instagram.svg.webp" alt="Instagram"></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2023 Your E-commerce. All rights reserved.
-        </div>
-    </footer>  
-</body>
-</html>
+{% endblock %}

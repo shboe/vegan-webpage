@@ -34,3 +34,20 @@
     </div>
 </body>
 </html>
+{% extends 'base.html' %}
+{% block title %}Homepage{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block main %}
+    <section id="contents">
+        <div class="barcode">
+            <p><img src="../static/image/barcode.avif" alt="" id="sample_img2"></p>
+        </div>
+        <div class="search">
+            <input type="text" id="input_bar">
+            <p><img src="../static/image/search-icon.webp" alt="" id="sample_img1"></p>
+        </div>
+        <h2>Input the barcode. バーコードナンバーを入力してください</h2>
+    </section>
+{% endblock %}

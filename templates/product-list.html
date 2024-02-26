@@ -1,55 +1,34 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product List/商品リスト</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-</head>
+{% extends 'base.html' %}
+{% block title %}Homepage{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block main %}
 <body>
     <nav>
         <ul>
             <li><a><img src="../static/image/logo.png" alt=""></a></li>
-            <li><a id="underline" href="#">ホーム</a></li>
+            <li><a id="underline" href="/homepage">ホーム</a></li>
             <li><a id="underline" href="#">商品一覧</a></li>
             <li><a id="underline" href="#">Veganについて</a></li>
             <li><a id="underline" href="#">バーコード入力</a></li>
         </ul>
     </nav>
+    <div id="navbarspace"></div>
     <div id="product-list">
+        <h1>商品一覧</h1>
         <div id="products">
             {% for product in result %}
-                <div class="product">
-                    <h1>{{ product.sname }}</h1>
-                    <p>{{ product.store }}</p>
+                <div id="product">
+                    <a href="/detail/{{ scode }}" method="GET">
+                        <img src="../static/image/{{ product.filename }}" alt="">
+                        <h1>{{ product.sname }}</h1>
+                        <p>{{ product.store }}</p>
+                    </a>
                 </div>
             {% endfor %}
         </div>
     </div>
-    <footer>
-        <div id="footer-content">
-            <div class="footer-section1">
-                <img src="../static/img/logo.png" alt="">
-            </div>
-            <div class="footer-section2">
-                <ul>
-                    <li><a href="#">Customer service</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section3">
-                <ul class="social-links">
-                    <li><a href="#"><img src="../static/image/facebook.png" alt="Facebook"></a></li>
-                    <li><a href="#"><img src="../static/image/X-Logo.png" alt="Twitter"></a></li>
-                    <li><a href="#"><img src="../static/image/Instagram.svg.webp" alt="Instagram"></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2023 Your E-commerce. All rights reserved.
-        </div>
-    </footer>
+{% endblock %}
 </body>
 </html>
