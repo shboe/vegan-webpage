@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    {% block head %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product List/商品リスト</title>
+    <meta name="viewport" content="width-device-width, initial-scale-1.0">
+    <title>{% block title %}title{% endblock %}</title>
     <link rel="stylesheet" href="../static/css/style.css">
+    {% endblock %}
 </head>
 <body>
     <nav>
-        <p><img src="../img/groceries.png" alt=""></p>
-        <a href="./homepage.html"><h1>ホーム</h1></a>
-        <a href="./product-list.html"><h1>商品一覧</h1></a>
-        <a href="./barcode-input.html"><h1>バーコードインプット</h1></a>
+        <ul>
+            <li><a><img src="../static/image/logo.png" alt=""></a></li>
+            <li><a id="underline" href="/homepage">ホーム</a></li>
+            <li><a id="underline" href="/list">商品一覧</a></li>
+            <li><a id="underline" href="#">Veganについて</a></li>
+            <li><a id="underline" href="/barcode">バーコード入力</a></li>
+        </ul>
     </nav>
     <h1>product/商品</h1>
+        {% block main %}
+
+        {% endblock %}
+        <footer>
+            <div id="footer-content">
+                <div class="footer-section1">
+                    <img src="../static/image/logo.png" alt="">
+                </div>
+                <div class="footer-section2">
+                    <ul>
+                        <li><a href="#">Customer service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section3">
+                    <ul class="social-links">
+                        <li><a href="#"><img src="../static/image/facebook.png" alt="Facebook"></a></li>
+                        <li><a href="#"><img src="../static/image/X-Logo.png" alt="Twitter"></a></li>
+                        <li><a href="#"><img src="../static/image/Instagram.svg.webp" alt="Instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Your E-commerce. All rights reserved.
+            </div>
+        </footer>  
 </body>
 </html>
