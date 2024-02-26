@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import mysql.connector
 
-
 app = Flask(__name__)
 
 class DbOP:
@@ -79,7 +78,7 @@ class DbOP:
         self.__con.close()
 
 #home page ################################################
-@app.route('/')
+@app.route('/homepage')
 def index():
     return render_template('homepage.html')
 ############################################################

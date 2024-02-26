@@ -10,18 +10,23 @@
     <nav>
         <ul>
             <li><a><img src="../static/image/logo.png" alt=""></a></li>
-            <li><a id="underline" href="#">ホーム</a></li>
+            <li><a id="underline" href="/homepage">ホーム</a></li>
             <li><a id="underline" href="#">商品一覧</a></li>
             <li><a id="underline" href="#">Veganについて</a></li>
             <li><a id="underline" href="#">バーコード入力</a></li>
         </ul>
     </nav>
+    <div id="navbarspace"></div>
     <div id="product-list">
+        <h1>商品一覧</h1>
         <div id="products">
             {% for product in result %}
-                <div class="product">
-                    <h1>{{ product.sname }}</h1>
-                    <p>{{ product.store }}</p>
+                <div id="product">
+                    <a href="#">
+                        <img src="../static/image/{{ product.filename }}" alt="">
+                        <h1>{{ product.sname }}</h1>
+                        <p>{{ product.store }}</p>
+                    </a>
                 </div>
             {% endfor %}
         </div>
@@ -29,7 +34,7 @@
     <footer>
         <div id="footer-content">
             <div class="footer-section1">
-                <img src="../static/img/logo.png" alt="">
+                <img src="../static/image/logo.png" alt="">
             </div>
             <div class="footer-section2">
                 <ul>
