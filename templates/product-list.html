@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List/商品リスト</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a><img src="../img/logo.png" alt=""></a></li>
+            <li><a id="underline" href="#">ホーム</a></li>
+            <li><a id="underline" href="#">商品一覧</a></li>
+            <li><a id="underline" href="#">Veganについて</a></li>
+            <li><a id="underline" href="#">バーコード入力</a></li>
+        </ul>
+    </nav>
+    <div id="product-list">
+        <div id="products">
+            {% for product in result %}
+                <div class="product">
+                    <h1>{{ product.sname }}</h1>
+                    <p>{{ product.store }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <footer>
+        <div id="footer-content">
+            <div class="footer-section1">
+                <img src="../img/logo.png" alt="">
+            </div>
+            <div class="footer-section2">
+                <ul>
+                    <li><a href="#">Customer service</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section3">
+                <ul class="social-links">
+                    <li><a href="#"><img src="../img/facebook.png" alt="Facebook"></a></li>
+                    <li><a href="#"><img src="../img/X-Logo.png" alt="Twitter"></a></li>
+                    <li><a href="#"><img src="../img/Instagram.svg.webp" alt="Instagram"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Your E-commerce. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

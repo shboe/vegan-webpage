@@ -246,7 +246,7 @@ nav img {
 }
 
 #homepage {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/homepage-background.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../image/homepage-background.jpg);
   height: 100vh;
   background-size: cover;
   display: flex;
@@ -303,7 +303,7 @@ nav img {
   margin: 0 auto;
 }
 #homepage2 #homepage-content2 {
-  background-image: url(../img/vegan-contentbg.jpg);
+  background-image: url(../image/homepage-background.jpg);
   background-size: cover;
   border: solid 1px rgb(176, 215, 36);
   border-radius: 10px;
@@ -376,4 +376,8 @@ footer .copyright {
   color: white;
   height: 10vh;
   background-color: #008375;
+}
+
+#product-list {
+  height: 100vh;
 }/*# sourceMappingURL=style.css.map */
