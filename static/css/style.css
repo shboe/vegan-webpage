@@ -69,7 +69,8 @@ a {
 }
 
 abbr[title] {
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 b, strong {
@@ -106,7 +107,8 @@ svg, img, embed, object, iframe {
 
 button, input, optgroup, select, textarea {
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   vertical-align: middle;
   color: inherit;
   font: inherit;
@@ -380,4 +382,30 @@ footer .copyright {
 
 #product-list {
   height: 100vh;
+}
+
+body #contents {
+  text-align: center;
+  padding: 100px;
+}
+body #contents h2 {
+  font-size: 1.5em;
+  font-weight: bolder;
+  margin-top: 50px;
+  padding-bottom: 100px;
+}
+body .search {
+  display: flex;
+  justify-content: center;
+}
+body #sample_img1 {
+  transform: translate(10px, -8px);
+  width: 50px;
+}
+body #sample_img2 {
+  width: 400px;
+}
+body #input_bar {
+  border: 1px solid black;
+  height: 2em;
 }/*# sourceMappingURL=style.css.map */

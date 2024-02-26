@@ -1,0 +1,27 @@
+body{
+    #contents{
+      text-align: center;
+      padding: 100px;
+      h2{
+        font-size: 1.5em;
+        font-weight: bolder;
+        margin-top: 50px;
+        padding-bottom: 100px;
+      }
+    }
+    .search{
+        display: flex;
+        justify-content: center;
+    }
+    #sample_img1{
+        transform: translate(10px,-8px);
+        width: 50px;
+    }
+    #sample_img2{
+        width: 400px;
+    }
+    #input_bar{
+        border: 1px solid black;
+        height: 2em;
+    }
+}
