@@ -102,9 +102,12 @@ def list():
         print(e)
 ########################################################
         
+# barcode-input
+@app.route('/barcode',methods=["GET"])
+def barcode():
+    return render_template('barcode-input.html')
 
-
-
+# 
 
 
 

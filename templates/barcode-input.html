@@ -8,28 +8,57 @@
 </head>
 <body>
     <nav>
-        <p><img src="../img/groceries.png" alt=""></p>
-        <a href="./homepage.html"><h1>ホーム</h1></a>
-        <a href="./product-list.html"><h1>商品一覧</h1></a>
-        <a href="./barcode-input.html"><h1>バーコードインプット</h1></a>
+        <ul>
+            <li><a><img src="../static/image/logo.png" alt=""></a></li>
+            <li><a id="underline" href="#">ホーム</a></li>
+            <li><a id="underline" href="/list">商品一覧</a></li>
+            <li><a id="underline" href="#">Veganについて</a></li>
+            <li><a id="underline" href="#">バーコード入力</a></li>
+        </ul>
     </nav>
-    <h2>Input the barcode. バーコードナンバーを入力してください</h2>
-    <div class="search">
-        <input type="text">
-        <p><img src="../image/search-icon.webp" alt=""></p>
-            <!-- <form action="your_script.php" method="post">
-                <label for="input">Input the barcode</label>
-                <input type="text" id="input" name="input"><br><br>
-                
-                <label for="">Enter</label>
-                <input type="radio" id="submit" name="submit" value="barcodenumber"><br>
-                
-                <input type="submit" value="Submit">
-            </form> -->
-    </div>
-    <div class="barcode">
-        <p><img src="../img/barcode.avif" alt=""></p>
-    </div>
-    
+    <section id="contents">
+        <div class="barcode">
+            <p><img src="../static/image/barcode.avif" alt="" id="sample_img2"></p>
+        </div>
+        <div class="search">
+            <input type="text" id="input_bar">
+            <p><img src="../static/image/search-icon.webp" alt="" id="sample_img1"></p>
+                <!-- <form action="your_script.php" method="post">
+                    <label for="input">Input the barcode</label>
+                    <input type="text" id="input" name="input"><br><br>
+                    
+                    <label for="">Enter</label>
+                    <input type="radio" id="submit" name="submit" value="barcodenumber"><br>
+                    
+                    <input type="submit" value="Submit">
+                </form> -->
+        </div>
+        <h2>Input the barcode. バーコードナンバーを入力してください</h2>
+    </section>
+    <footer>
+        <div id="footer-content">
+            <div class="footer-section1">
+                <img src="../static/image/logo.png" alt="">
+            </div>
+            <div class="footer-section2">
+                <ul>
+                    <li><a href="#">Customer service</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section3">
+                <ul class="social-links">
+                    <li><a href="#"><img src="../static/image/facebook.png" alt="Facebook"></a></li>
+                    <li><a href="#"><img src="../static/image/X-Logo.png" alt="Twitter"></a></li>
+                    <li><a href="#"><img src="../static/image/Instagram.svg.webp" alt="Instagram"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Your E-commerce. All rights reserved.
+        </div>
+    </footer>  
 </body>
 </html>

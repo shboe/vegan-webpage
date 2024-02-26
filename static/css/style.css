@@ -69,7 +69,8 @@ a {
 }
 
 abbr[title] {
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 b, strong {
@@ -106,7 +107,8 @@ svg, img, embed, object, iframe {
 
 button, input, optgroup, select, textarea {
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   vertical-align: middle;
   color: inherit;
   font: inherit;
@@ -379,36 +381,5 @@ footer .copyright {
 }
 
 #product-list {
-  width: 80%;
-  margin: 0 auto;
-}
-#product-list h1 {
-  font-size: 1.5em;
-}
-#product-list #products {
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  border-bottom: 1px;
-  padding: 50px;
-}
-#product-list #products #product {
-  width: calc(33.33% - 20px);
-  box-sizing: border-box;
-  margin: 10px;
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: rgba(104, 96, 96, 0.15) 0px 3px 3px 0px;
-}
-#product-list #products #product img {
-  width: 300px;
-}
-#product-list #products #product h1 {
-  margin-top: 10px;
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-#navbarspace {
-  height: 15vh;
+  height: 100vh;
 }/*# sourceMappingURL=style.css.map */
