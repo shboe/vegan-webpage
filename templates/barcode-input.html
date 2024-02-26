@@ -4,30 +4,25 @@
     {{ super() }}
 {% endblock %}
 {% block main %}
-    <h2>Input the barcode. バーコードナンバーを入力してください</h2>
-    <div class="search">
-        <form action="/barcode-input" method="post">
-            <input type="text" name="barcode">
-            <button type="submit">Search</button>
-        </form>
-        <p><img src="../image/search-icon.webp" alt=""></p>
-    </div>
-
-    <!-- Display error message if present -->
-    {% if error_message %}
-    <div class="error">
-        <p>{{ error_message }}</p>
-    </div>
-    {% endif %}
-
+    
     <section id="contents">
         <div class="barcode">
             <p><img src="../static/image/barcode.avif" alt="" id="sample_img2"></p>
         </div>
         <div class="search">
-            <input type="text" id="input_bar">
-            <p><img src="../static/image/search-icon.webp" alt="" id="sample_img1"></p>
+            <form action="/barcode-input" method="post">
+                <input type="text" name="barcode">
+                <button type="submit">Search</button>
+            </form>
+            <p><img src="../image/search-icon.webp" alt=""></p>
         </div>
+    
+        <!-- Display error message if present -->
+        {% if error_message %}
+        <div class="error">
+            <p>{{ error_message }}</p>
+        </div>
+        {% endif %}
         <h2>Input the barcode. バーコードナンバーを入力してください</h2>
     </section>
 {% endblock %}
