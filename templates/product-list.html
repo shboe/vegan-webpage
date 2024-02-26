@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product List/商品リスト</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-</head>
+{% extends 'base.html' %}
+{% block title %}Homepage{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block main %}
 <body>
     <nav>
         <ul>
@@ -22,7 +20,7 @@
         <div id="products">
             {% for product in result %}
                 <div id="product">
-                    <a href="#">
+                    <a href="/detail/{{ scode }}" method="GET">
                         <img src="../static/image/{{ product.filename }}" alt="">
                         <h1>{{ product.sname }}</h1>
                         <p>{{ product.store }}</p>
@@ -31,30 +29,6 @@
             {% endfor %}
         </div>
     </div>
-    <footer>
-        <div id="footer-content">
-            <div class="footer-section1">
-                <img src="../static/image/logo.png" alt="">
-            </div>
-            <div class="footer-section2">
-                <ul>
-                    <li><a href="#">Customer service</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section3">
-                <ul class="social-links">
-                    <li><a href="#"><img src="../static/image/facebook.png" alt="Facebook"></a></li>
-                    <li><a href="#"><img src="../static/image/X-Logo.png" alt="Twitter"></a></li>
-                    <li><a href="#"><img src="../static/image/Instagram.svg.webp" alt="Instagram"></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2023 Your E-commerce. All rights reserved.
-        </div>
-    </footer>
+{% endblock %}
 </body>
 </html>
