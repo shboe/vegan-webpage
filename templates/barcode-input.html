@@ -4,8 +4,6 @@
     {{ super() }}
 {% endblock %}
 {% block main %}
-
-<section id="test1">
     <h2>Input the barcode. バーコードナンバーを入力してください</h2>
     <div class="search">
         <form action="/barcode-input" method="post">
@@ -21,7 +19,6 @@
         <p>{{ error_message }}</p>
     </div>
     {% endif %}
-</section>
 
     <section id="contents">
         <div class="barcode">
