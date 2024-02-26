@@ -106,21 +106,23 @@ def list():
 
 
 
-
-
-
 # Define route to handle barcode search 
-@app.route('/barcode-input', methods=['POST'])
-def search():
-    barcode = request.form['scode']
-    dbop = DbOP("#")  #SQL Table
-    product = dbop.selectEx(f"barcode = '{barcode}'")
-    dbop.close()
-    if product:
-        return render_template('result.html', product=product)
+@app.route('/barcode-input', methods=['POST', 'GET'])
+def barcode_input():
+    if request.method == 'POST':
+        barcode = request.form['barcode']
+        dbop = DbOP("products")  # Assuming "products" is the name of your table
+        product = dbop.selectEx(f"barcode = '{barcode}'")
+        dbop.close()
+        if product:
+            return render_template('result.html', product=product)
+        else:
+            error_message = "Product not found!"
+            return render_template('barcode-input.html', error_message=error_message)
     else:
-        return "Product not found!" #change to an error under the barcode-input
+        return render_template('barcode-input.html')
 
+    
 
 
 if __name__ == '__main__':
