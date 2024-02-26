@@ -1,3 +1,31 @@
 #detail{
-    
+    padding: 50px;
+    #detail-content{
+        width: 80%;
+        margin: 0 auto;
+        padding: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid rgb(184, 180, 180);
+        margin-bottom: 10vh;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+        #detail-image{
+            img{
+                width: 500px;
+            }
+        }
+        #detail-description{
+            margin: 0 auto;
+            text-align: left;
+            line-height: 1.6;
+            h1{
+                font-size: 2em;
+            }
+            h2{
+                font-size: 1.2em;
+            }
+        }
+    }
 }

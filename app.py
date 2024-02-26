@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 
 app = Flask(__name__)
@@ -77,6 +77,12 @@ class DbOP:
     def close(self):
         self.__con.close()
 
+#redirect #################################################
+@app.route('/')
+def route():
+    return redirect(url_for('index'))
+#############################################################
+
 #home page ################################################
 @app.route('/homepage')
 def index():
@@ -122,33 +128,19 @@ def detail(scode):
         print(e)
 ##############################################################
 
-# barcode-input
-@app.route('/barcode',methods=["GET"])
+# barcode-input ############################################################
+@app.route('/barcode', methods=["GET", "POST"])
 def barcode():
     return render_template('barcode-input.html')
+#########################################################################
 
-# 
-
-
-
-# Define route to handle barcode search 
-@app.route('/barcode-input', methods=['POST', 'GET'])
-def barcode_input():
+# input button ##########################################################
+@app.route('/input', methods=["GET", "POST"])
+def submit():
     if request.method == 'POST':
-        barcode = request.form['barcode']
-        dbop = DbOP("products")  # Assuming "products" is the name of your table
-        product = dbop.selectEx(f"barcode = '{barcode}'")
-        dbop.close()
-        if product:
-            return render_template('result.html', product=product)
-        else:
-            error_message = "Product not found!"
-            return render_template('barcode-input.html', error_message=error_message)
-    else:
-        return render_template('barcode-input.html')
-
+        inputted_text = request.form['user_text']
+        return redirect(url_for('detail', scode=inputted_text))
+############################################################################
     
-
-
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)

@@ -1,33 +1,23 @@
 {% extends 'base.html' %}
-{% block title %}Homepage{% endblock %}
+{% block title %}バーコード番号入力{% endblock %}
 {% block head %}
     {{ super() }}
 {% endblock %}
 {% block main %}
-    <h2>Input the barcode. バーコードナンバーを入力してください</h2>
-    <div class="search">
-        <form action="/barcode-input" method="post">
-            <input type="text" name="barcode">
-            <button type="submit">Search</button>
-        </form>
-        <p><img src="../image/search-icon.webp" alt=""></p>
-    </div>
-
-    <!-- Display error message if present -->
-    {% if error_message %}
-    <div class="error">
-        <p>{{ error_message }}</p>
-    </div>
-    {% endif %}
-
-    <section id="contents">
+<div id="navbarspace"></div>
+<div id="barcode-page">
+    <div id="barcode-content">
         <div class="barcode">
-            <p><img src="../static/image/barcode.avif" alt="" id="sample_img2"></p>
+            <p><img src="../static/image/barcode.png" alt="" id="sample_img2"></p>
         </div>
         <div class="search">
-            <input type="text" id="input_bar">
-            <p><img src="../static/image/search-icon.webp" alt="" id="sample_img1"></p>
+            <form action="/input" method="post">
+                <input type="text" id="text_input" name="user_text">
+                <input type="image" src="../static/image/search.png" value="Submit" id="searchimg">
+            </form>
         </div>
-        <h2>Input the barcode. バーコードナンバーを入力してください</h2>
-    </section>
+        <h2>バーコード番号を入力してください</h2>
+    </div>
+</div>
+<!-- 2094205200516   2308655955330  4986858243683 -->
 {% endblock %}

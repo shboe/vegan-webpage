@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Homepage{% endblock %}
+{% block title %}商品一覧{% endblock %}
 {% block head %}
     {{ super() }}
 {% endblock %}
@@ -10,7 +10,7 @@
         <div id="products">
             {% for product in result %}
                 <div id="product">
-                    <a href="/detail/{{ product.scode }}" method="GET">
+                    <a href="/detail/{{ product.scode }}" method="GET" target="_blank">
                         <img src="../static/image/{{ product.filename }}" alt="">
                         <h1>{{ product.sname }}</h1>
                         <p>{{ product.store }}</p>

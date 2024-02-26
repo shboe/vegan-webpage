@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}Homepage{% endblock %}
+{% block title %}商品詳細{% endblock %}
 {% block head %}
     {{ super() }}
 {% endblock %}
 {% block main %}
     <div id="navbarspace"></div>
     <div id="detail">
-        <div id="detail-image">
-            <img src="../static/image/{{ result.filename }}" alt="">
-        </div>
         <div id="detail-content">
-            <h1>{{result.sname}}</h1>
-            <h2>{{result.category}}</h2>
-            <h3>{{result.vegan}}</h3>
-            <h4>{{result.store}}</h4>
-            <p>{{result.ingredient}}</p>
+            <div id="detail-image">
+                <img src="../static/image/{{ result.filename }}" alt="">
+            </div>
+            <div id="detail-description">
+                <h1>{{result.sname}}</h1>
+                <h2>カテゴリー : {{result.category}}</h2>
+                <h2>判定結果 : {{result.vegan}}</h2>
+                <h2>コンビニ : {{result.store}}</h2>
+                <h2> 詳細情報 : {{result.ingredient}}</h2>
+            </div>
         </div>
     </div>
 {% endblock %}
