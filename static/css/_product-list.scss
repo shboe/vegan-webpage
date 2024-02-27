@@ -13,12 +13,12 @@
             input{
                 appearance: auto;
             }
-            input[type=submit]{
+            input[type=submit], #uncheckButton{
                 padding: 5px;
                 border: solid black 2px;
                 border-radius: 10px;
             }
-            input[type=submit]:hover{
+            input[type=submit]:hover, #uncheckButton:hover{
                 color: white;
                 background-color: #46ea74;
             }
@@ -36,7 +36,7 @@
             margin: 10px;
             padding: 30px;
             border-radius: 5px;
-            box-shadow: rgba(104, 96, 96, 0.15) 0px 3px 3px 0px;
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
             img{
                 width: 300px;
             }

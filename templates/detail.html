@@ -6,7 +6,7 @@
 {% block main %}
     <div id="navbarspace"></div>
     <div id="detail">
-        <div id="detail-content">
+        <div id="detail-content" class="{% if result.vegan == 'vegan' %}vegan{% else %}non-vegan{% endif %}">
             <div id="detail-image">
                 <img src="../static/image/{{ result.filename }}" alt="">
             </div>

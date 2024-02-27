@@ -1,5 +1,11 @@
 #detail{
     padding: 50px;
+    .vegan{
+        box-shadow: 0 0 0 2px #63cb5c, 8px 8px 0 0 #63cb5c;
+    }
+    .non-vegan{
+        box-shadow: 0 0 0 2px rgba(218,102,123,1), 8px 8px 0 0 rgba(218,102,123,1);
+    }
     #detail-content{
         width: 80%;
         margin: 0 auto;
@@ -7,10 +13,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border: 1px solid rgb(184, 180, 180);
         margin-bottom: 10vh;
         border-radius: 5px;
-        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
         #detail-image{
             img{
                 width: 500px;

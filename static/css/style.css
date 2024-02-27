@@ -402,12 +402,12 @@ footer .copyright {
      -moz-appearance: auto;
           appearance: auto;
 }
-#product-list #filter .filtering input[type=submit] {
+#product-list #filter .filtering input[type=submit], #product-list #filter .filtering #uncheckButton {
   padding: 5px;
   border: solid black 2px;
   border-radius: 10px;
 }
-#product-list #filter .filtering input[type=submit]:hover {
+#product-list #filter .filtering input[type=submit]:hover, #product-list #filter .filtering #uncheckButton:hover {
   color: white;
   background-color: #46ea74;
 }
@@ -424,7 +424,7 @@ footer .copyright {
   margin: 10px;
   padding: 30px;
   border-radius: 5px;
-  box-shadow: rgba(104, 96, 96, 0.15) 0px 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 #product-list #products #product img {
   width: 300px;
@@ -478,6 +478,12 @@ footer .copyright {
 #detail {
   padding: 50px;
 }
+#detail .vegan {
+  box-shadow: 0 0 0 2px #63cb5c, 8px 8px 0 0 #63cb5c;
+}
+#detail .non-vegan {
+  box-shadow: 0 0 0 2px rgb(218, 102, 123), 8px 8px 0 0 rgb(218, 102, 123);
+}
 #detail #detail-content {
   width: 80%;
   margin: 0 auto;
@@ -485,10 +491,8 @@ footer .copyright {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgb(184, 180, 180);
   margin-bottom: 10vh;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 #detail #detail-content #detail-image img {
   width: 500px;
