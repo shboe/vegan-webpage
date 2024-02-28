@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Feb 19, 2024 at 05:59 AM
--- Server version: 5.7.34
--- PHP Version: 7.4.21
+-- Host: 127.0.0.1
+-- Generation Time: Feb 26, 2024 at 07:32 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `vegan_app`
+-- Database: `py24db`
 --
 
 -- --------------------------------------------------------
@@ -28,22 +28,34 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `products` (
-  `scode` VARCHAR(20) PRIMARY KEY,
+  `scode` varchar(20) NOT NULL,
   `sname` varchar(50) NOT NULL,
   `category` varchar(50) NOT NULL,
   `ingredient` varchar(100) NOT NULL,
   `vegan` varchar(20) NOT NULL,
-  `store` varchar(20) NOT NULL
+  `store` varchar(20) NOT NULL,
+  `filename` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`scode`, `sname`, `category`, `ingredient`, `vegan`, `store`) VALUES
-("4986858243683", 'キャベツミックス', 'カット野菜（生食用）', 'なし', 'vegan', 'FamilyMart'),
-("2094205200516", 'ちょびっとぶっかけうどん', '麺類', 'えび・魚', 'non-vegan', 'seven-eleven'),
-("2308655955330", 'ミックスサンド', 'サンドイッチ', '卵、魚、豚、乳', 'non-vegan', 'LAWSON');
+INSERT INTO `products` (`scode`, `sname`, `category`, `ingredient`, `vegan`, `store`, `filename`) VALUES
+('', 'ramen', '', '', '', 'LAWSON', 'ramenLAWSON.jpg'),
+('2094205200516', 'ちょびっとぶっかけうどん', '麺類', 'えび・魚', 'non-vegan', 'seven-eleven', 'udon711.jpg'),
+('2308655955330', 'ミックスサンド', 'サンドイッチ', '卵、魚、豚、乳', 'non-vegan', 'LAWSON', 'mixsandwhichLAWSON.png'),
+('4986858243683', 'キャベツミックス', 'カット野菜（生食用）', 'なし', 'vegan', 'FamilyMart', 'kyabetsuFAMIMA.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`scode`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
