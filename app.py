@@ -11,11 +11,17 @@ class DbOP:
         self.__password = "py24pass"
         self.__db = "py24db"
         self.__table = table
+
+        # self.__port = 8889
+
         self.__con = mysql.connector.connect(
             host = self.__host,
             user = self.__user,
             password = self.__password,
-            db = self.__db
+            db = self.__db,
+
+            # port = self.__port
+
         )
     #method
     #db接続＆全件抽出
