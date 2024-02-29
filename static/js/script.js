@@ -1,8 +1,10 @@
-const radioButtons = document.querySelectorAll('input[type="radio"]');
-const uncheckButton = document.getElementById('uncheckButton');
+const form = document.getElementById('filterForm');
+const storeSelect = document.getElementById('store');
+const categorySelect = document.getElementById('category');
 
-    uncheckButton.addEventListener('click', () => {
-        radioButtons.forEach(button => {
-            button.checked = false;
-        });
-    });
+storeSelect.addEventListener('change', submitForm);
+categorySelect.addEventListener('change', submitForm);
+
+function submitForm() {
+    form.submit();
+}

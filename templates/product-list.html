@@ -7,24 +7,27 @@
     <div id="navbarspace"></div>
     <div id="product-list">
         <h1>商品一覧</h1>
+        <br>
         <div id="filter">
-            <form action="{{ url_for('run_query') }}" method="post" class="filtering">
-                <div>
-                <input type="radio" name="store" value="lawson" id="lawson" {% if selected_store == 'lawson' %}checked{% endif %}>
-                <label for="lawson">LAWSON</label>
-                <input type="radio" name="store" value="sevel" id="sevel" {% if selected_store == 'sevel' %}checked{% endif %}>
-                <label for="sevel">7-ELEVEN</label>
-                <input type="radio" name="store" value="famima" id="famima" {% if selected_store == 'famima' %}checked{% endif %}>
-                <label for="famima">Family Mart</label> 
-                </div>
+            <form action="{{ url_for('run_query') }}" method="post" class="filtering" id="filterForm">
+                <label for="category">カテゴリー:</label>
+                <select name="category" id="category">
+                    <option value="">全カテゴリー</option>
+                    <option value="vegan" {% if selected_category == 'vegan' %}selected{% endif %}>Vegan</option>
+                    <option value="non-vegan" {% if selected_category == 'non-vegan' %}selected{% endif %}>Non-Vegan</option>
+                </select>
                 <br>
-                <input type="radio" name="category" value="vegan" id="vegan" {% if selected_category == 'vegan' %}checked{% endif %}>
-                <label for="vegan">Vegan</label>
-                <input type="radio" name="category" value="non-vegan" id="non-vegan" {% if selected_category == 'non-vegan' %}checked{% endif %}>
-                <label for="non-vegan">Non-Vegan</label>
-                <input type="submit" value="FILTER">
-                <button id="uncheckButton">CLEAR</button>
-            </form>
+                <br>
+                <label for="store">コンビニ:</label>
+                <select name="store" id="store">
+                    <option value="">全コンビニ</option>
+                    <option value="sevel" {% if selected_store == 'sevel' %}selected{% endif %}>7-ELEVEN</option>
+                    <option value="famima" {% if selected_store == 'famima' %}selected{% endif %}>Family Mart</option>
+                    <option value="lawson" {% if selected_store == 'lawson' %}selected{% endif %}>LAWSON</option>
+                </select>
+                <div>
+                </div>
+            </form>            
         </div>
         <div id="products">
             {% for product in result %}

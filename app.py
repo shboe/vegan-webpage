@@ -169,22 +169,14 @@ def run_query():
     selected_category = request.form.get('category')
     sql = "SELECT * FROM products WHERE 1=1"
 
-    if selected_store and selected_category:
-        sql += " AND store LIKE '{}%' AND vegan LIKE '{}%';".format(selected_store[0], selected_category[0])
-    elif selected_store:
-        if selected_store == 'lawson':
-            sql += " AND store LIKE 'L%';"
-        elif selected_store == 'sevel':
-            sql += " AND store LIKE 'S%';"
-        elif selected_store == 'famima':
-            sql += " AND store LIKE 'F%';"
-    elif selected_category:
-        if selected_category == 'vegan':
-            sql += " AND vegan LIKE 'V%';"
-        elif selected_category == 'non-vegan':
-            sql += " AND vegan LIKE 'N%';"
+    if selected_store:
+        sql += " AND store LIKE '{}%'".format(selected_store[0])
+    if selected_category:
+        sql += " AND vegan LIKE '{}%'".format(selected_category[0])
 
     print(sql)
+    print(selected_category)
+    print(selected_store)
     try:
         dbop = DbOP("products")
         result = dbop.selectAll(sql)
