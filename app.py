@@ -174,9 +174,6 @@ def run_query():
     if selected_category:
         sql += " AND vegan LIKE '{}%'".format(selected_category[0])
 
-    print(sql)
-    print(selected_category)
-    print(selected_store)
     try:
         dbop = DbOP("products")
         result = dbop.selectAll(sql)
