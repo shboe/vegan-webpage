@@ -25,8 +25,11 @@ class DbOP:
         )
     #method
     #db接続＆全件抽出
-    def selectAll(self):
-        sql = 'SELECT * FROM ' + self.__table +';'
+    def selectAll(self, sql_query=None):
+        if sql_query is None:
+            sql = 'SELECT * FROM ' + self.__table + ';'
+        else:
+            sql = sql_query
         cur = self.__con.cursor(dictionary=True) #カーソル作成
         cur.execute(sql)#sql発行
         res = cur.fetchall()#select結果全件格納
@@ -159,6 +162,45 @@ def submit():
             return render_template('barcode-input.html', user_text='', error_message=error_message)
     return redirect(url_for('barcode'))
 ############################################################################
-    
+#filter function
+@app.route('/run_query', methods=['POST'])
+def run_query():
+    selected_store = request.form.get('store')
+    selected_category = request.form.get('category')
+    sql = "SELECT * FROM products WHERE 1=1"
+
+    if selected_store and selected_category:
+        sql += " AND store LIKE '{}%' AND vegan LIKE '{}%';".format(selected_store[0], selected_category[0])
+    elif selected_store:
+        if selected_store == 'lawson':
+            sql += " AND store LIKE 'L%';"
+        elif selected_store == 'sevel':
+            sql += " AND store LIKE 'S%';"
+        elif selected_store == 'famima':
+            sql += " AND store LIKE 'F%';"
+    elif selected_category:
+        if selected_category == 'vegan':
+            sql += " AND vegan LIKE 'V%';"
+        elif selected_category == 'non-vegan':
+            sql += " AND vegan LIKE 'N%';"
+
+    print(sql)
+    try:
+        dbop = DbOP("products")
+        result = dbop.selectAll(sql)
+        dbop.close()
+        if result is None:
+            result = []
+        return render_template('product-list.html', result=result, selected_store=selected_store, selected_category=selected_category)
+    except mysql.connector.errors.ProgrammingError as e:
+        print('***DB接続エラー****')
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print('****システム運行プログラムエラー****')
+        print(type(e))
+        print(e)
+#########################################################################
+
 if __name__ == '__main__':
-    app.run(host='localhost', port=5000, debug=True)
+    app.run(host='localhost', port=5001, debug=True)
