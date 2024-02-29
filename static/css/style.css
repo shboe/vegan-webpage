@@ -402,12 +402,12 @@ footer .copyright {
      -moz-appearance: auto;
           appearance: auto;
 }
-#product-list #filter .filtering input[type=submit] {
+#product-list #filter .filtering input[type=submit], #product-list #filter .filtering #uncheckButton {
   padding: 5px;
   border: solid black 2px;
   border-radius: 10px;
 }
-#product-list #filter .filtering input[type=submit]:hover {
+#product-list #filter .filtering input[type=submit]:hover, #product-list #filter .filtering #uncheckButton:hover {
   color: white;
   background-color: #46ea74;
 }
