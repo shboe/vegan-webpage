@@ -1,22 +1,22 @@
-{% extends 'base.html' %}
-{% block title %}商品一覧{% endblock %}
+{% extends 'base-en.html' %}
+{% block title %}Product List{% endblock %}
 {% block head %}
     {{ super() }}
 {% endblock %}
 {% block main %}
     <div id="navbarspace"></div>
     <div id="product-list">
-        <h1>商品一覧</h1>
+        <h1>Product List</h1>
         <div id="filter-button">
-            <form id="filter" action="/list" method="GET">
+            <form id="filter" action="/list-en" method="GET">
                 <select name="store" id="store" onchange="submitForm()">
-                    <option value="" {% if not store_filter %}selected{% endif %}>すべての店舗</option>
+                    <option value="" {% if not store_filter %}selected{% endif %}>All Stores</option>
                     <option value="LAWSON" {% if store_filter == 'LAWSON' %}selected{% endif %}>Lawson</option>
                     <option value="seven-eleven" {% if store_filter == 'seven-eleven' %}selected{% endif %}>7-Eleven</option>
                     <option value="FamilyMart" {% if store_filter == 'FamilyMart' %}selected{% endif %}>FamilyMart</option>
                 </select>   
                 <select name="vegan" id="vegan" onchange="submitForm()">
-                    <option value="">全商品</option>
+                    <option value="">All Products</option>
                     <option value="vegan" {% if vegan_filter == 'vegan' %}selected{% endif %}>Vegan</option>
                     <option value="non-vegan" {% if vegan_filter == 'non-vegan' %}selected{% endif %}>Non-Vegan Products</option>
                 </select>
@@ -26,7 +26,7 @@
         {% if result %}
             {% for product in result %}
                 <div id="product">
-                    <a href="/detail/{{ product.scode }}" method="GET">
+                    <a href="/detail-en/{{ product.scode }}" method="GET">
                         <img src="../static/image/{{ product.filename }}" alt="">
                         <h1>{{ product.sname }}</h1>
                         <p>{{ product.store }}</p>
@@ -35,7 +35,7 @@
                 </div>
             {% endfor %}
         {% else %}
-            <p>データベースに存在していません。</p>
+            <p>No Data Found.</p>
         {% endif %}
         </div>
     </div>

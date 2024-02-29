@@ -163,7 +163,6 @@ def barcode():
 #########################################################################
 
 # input button ##########################################################
-# input button ##########################################################
 @app.route('/input', methods=["GET", "POST"])
 def submit():
     if request.method == 'POST':
@@ -185,6 +184,112 @@ def submit():
     return redirect(url_for('barcode'))
 
 ############################################################################
+###英語版####
+#######
+#######
+#######
+
+#home page ################################################
+@app.route('/homepage-en')
+def indexen():
+    return render_template('homepage-en.html')
+############################################################
+
+#product list page #####################################
+@app.route('/list-en', methods=["GET"])
+def listen():
+    try:
+        store_filter = request.args.get('store')
+        vegan_filter = request.args.get('vegan')
+        dbop = DbOP("productsen")
+        
+        # Construct the SQL query based on the filters
+        conditions = []
+        if store_filter in ['LAWSON', 'seven-eleven', 'FamilyMart']:
+            conditions.append("store = '" + store_filter + "'")
+        if vegan_filter in ['vegan', 'non-vegan']:
+            conditions.append("vegan = '" + vegan_filter + "'")
+        
+        # Join the conditions with AND if there are multiple
+        where_clause = " AND ".join(conditions) if conditions else None
+        
+        result = dbop.selectEx(where_clause)
+        dbop.close()
+
+        if result is None:
+            print('データベースに存在していません。')
+            result = []
+
+        return render_template('product-list-en.html', result=result, store_filter=store_filter, vegan_filter=vegan_filter)
+    except mysql.connector.errors.ProgrammingError as e:
+        print('***DB接続エラー****')
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print('****システム運行プログラムエラー****')
+        print(type(e))
+        print(e)
+########################################################
+# detail page #######################
+@app.route('/detail-en/<scode>', methods=["GET"])
+def detailen(scode):
+    try:
+        dbop = DbOP("productsen")
+        result = dbop.selectEx("SCODE = '" + scode + "'")
+        dbop.close()
+        if not result:
+            return redirect(url_for('submit'))
+        result = result[0]  # Assuming selectEx returns a list, so we take the first item
+        return render_template('detail-en.html', result=result)
+    except mysql.connector.errors.ProgrammingError as e:
+        print('***DB接続エラー****')
+        print(type(e))
+        print(e)
+    except Exception as e:
+        print('****システム運行プログラムエラー****')
+        print(type(e))
+        print(e)
+##############################################################
+
+# barcode-input ############################################################
+@app.route('/barcode-en', methods=["GET", "POST"])
+def barcodeen():
+    return render_template('barcode-input-en.html')
+#########################################################################
+
+# input button ##########################################################
+@app.route('/input-en', methods=["GET", "POST"])
+def submiten():
+    if request.method == 'POST':
+        inputted_text = request.form['user_text']
+        if not inputted_text:
+            error_message = "バーコードの番号を入力してください"
+            return render_template('barcode-input-en.html', user_text='', error_message=error_message)
+        try:
+            dbop = DbOP("productsen")
+            result = dbop.selectEx("SCODE = '" + inputted_text + "'")
+            dbop.close()
+            if not result:
+                error_message = "入力された番号はデータベースに存在していません。"
+                return render_template('barcode-input-en.html', user_text='', error_message=error_message)
+            return redirect(url_for('detail', scode=inputted_text))
+        except IndexError:
+            error_message = "入力された番号はデータベースに存在していません。"
+            return render_template('barcode-input-en.html', user_text='', error_message=error_message)
+    return redirect(url_for('barcode'))
+
+@app.route('/home-la', methods=['GET', 'POST'])
+def select_language():
+    if request.method == 'POST':
+        language = request.form.get('language')
+        if language == 'en':
+            return render_template('homepage-en.html')
+        elif language == 'jp':
+            return render_template('homepage.html')
+        else:
+            return render_template('homepage.html')
+    else:
+        return render_template('homepage.html')
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5001, debug=True)

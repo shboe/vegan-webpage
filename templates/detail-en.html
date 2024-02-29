@@ -1,0 +1,22 @@
+{% extends 'base-en.html' %}
+{% block title %}Product Details{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block main %}
+    <div id="navbarspace"></div>
+    <div id="detail">
+        <div id="detail-content" class="{% if result.vegan == 'vegan' %}vegan{% else %}non-vegan{% endif %}">
+            <div id="detail-image">
+                <img src="../static/image/{{ result.filename }}" alt="">
+            </div>
+            <div id="detail-description">
+                <h1>{{result.sname}}</h1>
+                <h2>Category : {{result.category}}</h2>
+                <h3>Vegan/Non-Vegan : {{result.vegan}}</h2>
+                <h2>Convinience Store : {{result.store}}</h2>
+                <h2> Detailed information : {{result.ingredient}}</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}

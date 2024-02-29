@@ -1,0 +1,23 @@
+{% extends 'base-en.html' %}
+{% block title %}Input Barcode{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block main %}
+<div id="navbarspace"></div>
+<div id="barcode-page">
+    <div id="barcode-content">
+        <div class="barcode">
+            <p><img src="../static/image/barcode.png" alt="" id="sample_img2"></p>
+        </div>
+        <div class="search">
+            <form action="/input-en" method="post">
+                <input type="text" id="text_input" name="user_text" placeholder="{{ error_message }}" value="{{ user_text }}">
+                <input type="image" src="../static/image/search.png" value="Submit" id="searchimg">
+            </form>
+        </div>
+        <h2>Input Barcode Number</h2>
+    </div>
+</div>
+<!-- 2094205200516   2308655955330  4986858243683 -->
+{% endblock %}
