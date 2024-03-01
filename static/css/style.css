@@ -303,6 +303,7 @@ nav img {
   margin: 0 auto;
 }
 #homepage2 #homepage-content2 {
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   background-image: url(../image/homepage-background.jpg);
   background-size: cover;
   border: solid 1px rgb(176, 215, 36);
