@@ -7,25 +7,18 @@
     <div id="navbarspace"></div>
     <div id="product-list">
         <h1>商品一覧</h1>
-        <div id="filter">
-            <form action="{{ url_for('run_query') }}" method="post" class="filtering">
-                <div>
-                <input type="radio" name="store" value="lawson" id="lawson" {% if selected_store == 'lawson' %}checked{% endif %}>
-                <label for="lawson">LAWSON</label>
-                <input type="radio" name="store" value="sevel" id="sevel" {% if selected_store == 'sevel' %}checked{% endif %}>
-                <label for="sevel">7-ELEVEN</label>
-                <input type="radio" name="store" value="famima" id="famima" {% if selected_store == 'famima' %}checked{% endif %}>
-                <label for="famima">Family Mart</label> 
-                </div>
-                <br>
-                <input type="radio" name="category" value="vegan" id="vegan" {% if selected_category == 'vegan' %}checked{% endif %}>
-                <label for="vegan">Vegan</label>
-                <input type="radio" name="category" value="non-vegan" id="non-vegan" {% if selected_category == 'non-vegan' %}checked{% endif %}>
-                <label for="non-vegan">Non-Vegan</label>
-                <input type="submit" value="FILTER">
-                <button id="uncheckButton">CLEAR</button>
-            </form>
-        </div>
+        <form id="filter" action="/list" method="GET">
+            <select name="store" id="store" onchange="submitForm()">
+                <option value="" {% if not store_filter %}selected{% endif %}>All Stores</option>
+                <option value="LAWSON" {% if store_filter == 'LAWSON' %}selected{% endif %}>LAWSON</option>
+                <option value="seven-eleven" {% if store_filter == 'seven-eleven' %}selected{% endif %}>seven-eleven</option>
+                <option value="FamilyMart" {% if store_filter == 'FamilyMart' %}selected{% endif %}>FamilyMart</option>
+            </select>   
+            <select name="vegan" id="vegan" onchange="submitForm()">
+                <option value="">All</option>
+                <option value="vegan" {% if vegan_filter == 'vegan' %}selected{% endif %}>Vegan</option>
+                <option value="non-vegan" {% if vegan_filter == 'non-vegan' %}selected{% endif %}>Non-Vegan</option>
+            </select>
         <div id="products">
             {% for product in result %}
                 <div id="product">

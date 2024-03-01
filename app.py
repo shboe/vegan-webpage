@@ -25,16 +25,13 @@ class DbOP:
         )
     #method
     #db接続＆全件抽出
-    def selectAll(self, sql_query=None):
-        if sql_query is None:
-            sql = 'SELECT * FROM ' + self.__table + ';'
-        else:
-            sql = sql_query
+    def selectAll(self):
+        sql = 'SELECT * FROM ' + self.__table +';'
         cur = self.__con.cursor(dictionary=True) #カーソル作成
         cur.execute(sql)#sql発行
         res = cur.fetchall()#select結果全件格納
-        cur.close()#カーソルclose
         return res
+    
     def selectPage(self,pgno,cnt):
 
         sql = 'SELECT * FROM ' + self.__table + ';'
@@ -52,15 +49,20 @@ class DbOP:
         res = tbl[sidx:eidx]
         cur.close()
         return res
-    def selectEx(self,ex):
-        sql = 'SELECT * FROM ' + self.__table + ' WHERE ' + ex + ';'
-        
+    def selectEx(self, ex=None):
+        if ex:
+            sql = 'SELECT * FROM ' + self.__table + ' WHERE ' + ex + ';'
+        else:
+            sql = 'SELECT * FROM ' + self.__table + ';'
+
+        print("Generated SQL query:", sql)
+
         cur = self.__con.cursor(dictionary=True)
         cur.execute(sql)
         res = cur.fetchall()
         cur.close()
-        #2次元配列の0行目（一件）のみを返す
-        return res[0]
+        return res
+
     # DB 接続＆データ件数取得
     def selectCnt(self):
 
@@ -102,11 +104,28 @@ def index():
 @app.route('/list', methods=["GET"])
 def list():
     try:
+        store_filter = request.args.get('store')
+        vegan_filter = request.args.get('vegan')
         dbop = DbOP("products")
-        result = dbop.selectAll()
+        
+        # Construct the SQL query based on the filters
+        conditions = []
+        if store_filter in ['LAWSON', 'seven-eleven', 'FamilyMart']:
+            conditions.append("store = '" + store_filter + "'")
+        if vegan_filter in ['vegan', 'non-vegan']:
+            conditions.append("vegan = '" + vegan_filter + "'")
+        
+        # Join the conditions with AND if there are multiple
+        where_clause = " AND ".join(conditions) if conditions else None
+        
+        result = dbop.selectEx(where_clause)
         dbop.close()
-        #結果出力処理
-        return render_template('product-list.html', result=result)
+
+        if result is None:
+            print('No results found.')
+            result = []
+
+        return render_template('product-list.html', result=result, store_filter=store_filter, vegan_filter=vegan_filter)
     except mysql.connector.errors.ProgrammingError as e:
         print('***DB接続エラー****')
         print(type(e))
@@ -116,26 +135,25 @@ def list():
         print(type(e))
         print(e)
 ########################################################
-        
 # detail page #######################
 @app.route('/detail/<scode>', methods=["GET"])
 def detail(scode):
-    sql = "SCODE = '" + scode + "';"
     try:
-        dbop= DbOP("products")
-        result = dbop.selectEx(sql)
+        dbop = DbOP("products")
+        result = dbop.selectEx("SCODE = '" + scode + "'")
         dbop.close()
-        return render_template('detail.html',result=result)
+        if not result:
+            return redirect(url_for('submit'))
+        result = result[0]  # Assuming selectEx returns a list, so we take the first item
+        return render_template('detail.html', result=result)
     except mysql.connector.errors.ProgrammingError as e:
         print('***DB接続エラー****')
         print(type(e))
         print(e)
-    
     except Exception as e:
         print('****システム運行プログラムエラー****')
         print(type(e))
         print(e)
-        
 ##############################################################
 
 # barcode-input ############################################################
@@ -144,6 +162,7 @@ def barcode():
     return render_template('barcode-input.html')
 #########################################################################
 
+# input button ##########################################################
 # input button ##########################################################
 @app.route('/input', methods=["GET", "POST"])
 def submit():
@@ -156,51 +175,16 @@ def submit():
             dbop = DbOP("products")
             result = dbop.selectEx("SCODE = '" + inputted_text + "'")
             dbop.close()
+            if not result:
+                error_message = "入力された番号はデータベースに存在していません。"
+                return render_template('barcode-input.html', user_text='', error_message=error_message)
             return redirect(url_for('detail', scode=inputted_text))
         except IndexError:
             error_message = "入力された番号はデータベースに存在していません。"
             return render_template('barcode-input.html', user_text='', error_message=error_message)
     return redirect(url_for('barcode'))
+
 ############################################################################
-#filter function
-@app.route('/run_query', methods=['POST'])
-def run_query():
-    selected_store = request.form.get('store')
-    selected_category = request.form.get('category')
-    sql = "SELECT * FROM products WHERE 1=1"
-
-    if selected_store and selected_category:
-        sql += " AND store LIKE '{}%' AND vegan LIKE '{}%';".format(selected_store[0], selected_category[0])
-    elif selected_store:
-        if selected_store == 'lawson':
-            sql += " AND store LIKE 'L%';"
-        elif selected_store == 'sevel':
-            sql += " AND store LIKE 'S%';"
-        elif selected_store == 'famima':
-            sql += " AND store LIKE 'F%';"
-    elif selected_category:
-        if selected_category == 'vegan':
-            sql += " AND vegan LIKE 'V%';"
-        elif selected_category == 'non-vegan':
-            sql += " AND vegan LIKE 'N%';"
-
-    print(sql)
-    try:
-        dbop = DbOP("products")
-        result = dbop.selectAll(sql)
-        dbop.close()
-        if result is None:
-            result = []
-        return render_template('product-list.html', result=result, selected_store=selected_store, selected_category=selected_category)
-    except mysql.connector.errors.ProgrammingError as e:
-        print('***DB接続エラー****')
-        print(type(e))
-        print(e)
-    except Exception as e:
-        print('****システム運行プログラムエラー****')
-        print(type(e))
-        print(e)
-#########################################################################
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5001, debug=True)

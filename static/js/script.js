@@ -1,8 +1,4 @@
-const radioButtons = document.querySelectorAll('input[type="radio"]');
-const uncheckButton = document.getElementById('uncheckButton');
+function submitForm() {
+    document.getElementById("filter").submit();
+}
 
-    uncheckButton.addEventListener('click', () => {
-        radioButtons.forEach(button => {
-            button.checked = false;
-        });
-    });

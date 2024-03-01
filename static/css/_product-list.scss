@@ -1,26 +1,14 @@
 #product-list{
     width: 80%;
     margin: 0 auto;
+    min-height: 80vh;
     h1{
         font-size: 1.5em;
     }
-    #filter{
-        margin-top: 15px;
-        .filtering{
-            label{
-                margin-right: 15px;
-            }
-            input{
-                appearance: auto;
-            }
-            input[type=submit], #uncheckButton{
-                padding: 5px;
-                border: solid black 2px;
-                border-radius: 10px;
-            }
-            input[type=submit]:hover, #uncheckButton:hover{
-                color: white;
-                background-color: #46ea74;
+    #filter-buttons{
+        display: flex;
+        #filter{
+            margin-top: 15px;
             }
         }
     }

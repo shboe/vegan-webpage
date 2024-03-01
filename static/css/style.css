@@ -69,8 +69,7 @@ a {
 }
 
 abbr[title] {
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 b, strong {
@@ -107,8 +106,7 @@ svg, img, embed, object, iframe {
 
 button, input, optgroup, select, textarea {
   -webkit-appearance: none;
-  -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   vertical-align: middle;
   color: inherit;
   font: inherit;
@@ -387,27 +385,29 @@ footer .copyright {
 #product-list {
   width: 80%;
   margin: 0 auto;
+  min-height: 80vh;
 }
 #product-list h1 {
   font-size: 1.5em;
 }
-#product-list #filter {
+#product-list #filter-buttons {
+  display: flex;
+}
+#product-list #filter-buttons #filter {
   margin-top: 15px;
 }
-#product-list #filter .filtering label {
+#product-list #filter-buttons #filter .filtering label {
   margin-right: 15px;
 }
-#product-list #filter .filtering input {
-  -webkit-appearance: auto;
-     -moz-appearance: auto;
-          appearance: auto;
+#product-list #filter-buttons #filter .filtering input {
+  appearance: auto;
 }
-#product-list #filter .filtering input[type=submit], #product-list #filter .filtering #uncheckButton {
+#product-list #filter-buttons #filter .filtering input[type=submit], #product-list #filter-buttons #filter .filtering #uncheckButton {
   padding: 5px;
   border: solid black 2px;
   border-radius: 10px;
 }
-#product-list #filter .filtering input[type=submit]:hover, #product-list #filter .filtering #uncheckButton:hover {
+#product-list #filter-buttons #filter .filtering input[type=submit]:hover, #product-list #filter-buttons #filter .filtering #uncheckButton:hover {
   color: white;
   background-color: #46ea74;
 }
