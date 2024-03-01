@@ -336,10 +336,10 @@ nav img {
 }
 
 footer {
-  background-color: #008375;
-  color: white;
+  background-image: radial-gradient(at top, #7bb59a, #6b9a76);
+  color: rgb(255, 255, 255);
   text-align: center;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 footer #footer-content {
   width: 100%;
@@ -364,7 +364,7 @@ footer ul li {
 }
 footer ul li a {
   text-decoration: none;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 footer .social-links img {
   width: 40px;
@@ -373,9 +373,7 @@ footer .copyright {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   height: 10vh;
-  background-color: #008375;
 }
 
 #navbarspace {
@@ -390,26 +388,27 @@ footer .copyright {
 #product-list h1 {
   font-size: 1.5em;
 }
-#product-list #filter-buttons {
+#product-list #filter-button #filter {
   display: flex;
-}
-#product-list #filter-buttons #filter {
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  background-image: radial-gradient(at top, #b5e6cf, #9dddad);
   margin-top: 15px;
 }
-#product-list #filter-buttons #filter .filtering label {
-  margin-right: 15px;
-}
-#product-list #filter-buttons #filter .filtering input {
-  appearance: auto;
-}
-#product-list #filter-buttons #filter .filtering input[type=submit], #product-list #filter-buttons #filter .filtering #uncheckButton {
+#product-list #filter-button #filter select {
+  cursor: pointer;
   padding: 5px;
-  border: solid black 2px;
-  border-radius: 10px;
-}
-#product-list #filter-buttons #filter .filtering input[type=submit]:hover, #product-list #filter-buttons #filter .filtering #uncheckButton:hover {
-  color: white;
-  background-color: #46ea74;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 200px;
+  margin-right: 10px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size: 0.6em;
+  background-position: calc(100% - 1.3em) center;
+  background-repeat: no-repeat;
 }
 #product-list #products {
   display: flex;
@@ -481,8 +480,18 @@ footer .copyright {
 #detail .vegan {
   box-shadow: 0 0 0 2px #63cb5c, 8px 8px 0 0 #63cb5c;
 }
+#detail .vegan h3 {
+  background: #63cb5c;
+  width: fit-content;
+  padding: 5px;
+}
 #detail .non-vegan {
   box-shadow: 0 0 0 2px rgb(218, 102, 123), 8px 8px 0 0 rgb(218, 102, 123);
+}
+#detail .non-vegan h3 {
+  background: red;
+  width: fit-content;
+  padding: 5px;
 }
 #detail #detail-content {
   width: 80%;
@@ -505,6 +514,6 @@ footer .copyright {
 #detail #detail-content #detail-description h1 {
   font-size: 2em;
 }
-#detail #detail-content #detail-description h2 {
+#detail #detail-content #detail-description h2, #detail #detail-content #detail-description h3 {
   font-size: 1.2em;
 }/*# sourceMappingURL=style.css.map */

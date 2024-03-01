@@ -122,7 +122,7 @@ def list():
         dbop.close()
 
         if result is None:
-            print('No results found.')
+            print('データベースに存在していません。')
             result = []
 
         return render_template('product-list.html', result=result, store_filter=store_filter, vegan_filter=vegan_filter)
@@ -185,5 +185,6 @@ def submit():
     return redirect(url_for('barcode'))
 
 ############################################################################
+
 if __name__ == '__main__':
     app.run(host='localhost', port=5001, debug=True)

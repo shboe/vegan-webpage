@@ -1,11 +1,11 @@
 // Variables
 $footer-bg-color: #008375;
-$footer-text-color: white;
+$footer-text-color: rgb(255, 255, 255);
 footer {
-    background-color: $footer-bg-color;
+    background-image: radial-gradient(at top, #7bb59a, #6b9a76);
     color: $footer-text-color;
     text-align: center;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     #footer-content{
         width: 100%;
         display: flex;
@@ -41,8 +41,6 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
         height: 10vh;
-        background-color: #008375;
     }
 }
