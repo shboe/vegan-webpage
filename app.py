@@ -264,20 +264,20 @@ def submiten():
     if request.method == 'POST':
         inputted_text = request.form['user_text']
         if not inputted_text:
-            error_message = "バーコードの番号を入力してください"
+            error_message = "Please Enter The Barcode Number."
             return render_template('barcode-input-en.html', user_text='', error_message=error_message)
         try:
             dbop = DbOP("productsen")
             result = dbop.selectEx("SCODE = '" + inputted_text + "'")
             dbop.close()
             if not result:
-                error_message = "入力された番号はデータベースに存在していません。"
+                error_message = "The Inputted Barcode Number Doesn't Exist."
                 return render_template('barcode-input-en.html', user_text='', error_message=error_message)
-            return redirect(url_for('detail', scode=inputted_text))
+            return redirect(url_for('detailen', scode=inputted_text))
         except IndexError:
-            error_message = "入力された番号はデータベースに存在していません。"
+            error_message = "The Inputted Barcode Number Doesn't Exist."
             return render_template('barcode-input-en.html', user_text='', error_message=error_message)
-    return redirect(url_for('barcode'))
+    return redirect(url_for('barcode-en'))
 
 @app.route('/home-la', methods=['GET', 'POST'])
 def select_language():
