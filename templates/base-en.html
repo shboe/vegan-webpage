@@ -19,10 +19,10 @@
             <li><a id="underline" href="/barcode-en">Barcode Input</a></li>
             <div id="Language-Button">
                 <form id="Language" method="POST" action="/home-la">
-                    <select id="language-select" name="language" onchange="this.form.submit()">
-                        <option value="">Select Language</option>
-                        <option value="jp">日本語</option>
-                        <option value="en">English</option>
+                    <select id="language-select" name="language" onchange="submitForm2()">
+                        <option value="" {% if not selected_language %}selected{% endif %}>Select Language</option>
+                        <option value="jp" {% if selected_language == 'jp' %}selected{% endif %}>日本語</option>
+                        <option value="en" {% if selected_language == 'en' %}selected{% endif %}>English</option>
                     </select>   
                 </form>
             </div>

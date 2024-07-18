@@ -1,9 +1,6 @@
 function submitForm() {
     document.getElementById("filter").submit();
-}
-
-    uncheckButton.addEventListener('click', () => {
-        radioButtons.forEach(button => {
-            button.checked = false;
-        });
- });
+};
+function submitForm2() {
+    document.getElementById("Language").submit();
+};

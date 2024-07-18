@@ -287,16 +287,16 @@ def submiten():
 
 @app.route('/home-la', methods=['GET', 'POST'])
 def select_language():
+    selected_language = request.form.get('language', '')
     if request.method == 'POST':
-        language = request.form.get('language')
-        if language == 'en':
-            return render_template('homepage-en.html')
-        elif language == 'jp':
-            return render_template('homepage.html')
+        if selected_language == 'en':
+            return render_template('homepage-en.html', selected_language=selected_language)
+        elif selected_language == 'jp':
+            return render_template('homepage.html', selected_language=selected_language)
         else:
-            return render_template('homepage.html')
+            return render_template('homepage.html', selected_language=selected_language)
     else:
-        return render_template('homepage.html')
+        return render_template('homepage.html', selected_language=selected_language)
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5001, debug=True)
