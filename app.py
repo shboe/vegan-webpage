@@ -106,18 +106,23 @@ def list():
     try:
         store_filter = request.args.get('store')
         vegan_filter = request.args.get('vegan')
+
+        # Debugging print statements
+        print("Store filter:", store_filter)
+        print("Vegan filter:", vegan_filter)
+
         dbop = DbOP("products")
-        
+
         # Construct the SQL query based on the filters
         conditions = []
         if store_filter in ['LAWSON', 'seven-eleven', 'FamilyMart']:
             conditions.append("store = '" + store_filter + "'")
         if vegan_filter in ['vegan', 'non-vegan']:
             conditions.append("vegan = '" + vegan_filter + "'")
-        
+
         # Join the conditions with AND if there are multiple
         where_clause = " AND ".join(conditions) if conditions else None
-        
+
         result = dbop.selectEx(where_clause)
         dbop.close()
 
@@ -134,6 +139,7 @@ def list():
         print('****システム運行プログラムエラー****')
         print(type(e))
         print(e)
+
 ########################################################
 # detail page #######################
 @app.route('/detail/<scode>', methods=["GET"])

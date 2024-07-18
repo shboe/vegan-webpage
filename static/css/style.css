@@ -246,14 +246,14 @@ nav img {
   color: rgb(100, 183, 100);
 }
 
-#filter-button #filter {
+#Language-Button #Language {
   display: flex;
   justify-content: left;
   align-items: center;
   width: 100%;
   height: 100%;
 }
-#filter-button #filter select {
+#Language-Button #Language select {
   cursor: pointer;
   padding: 5px;
   border: 1px solid black;
